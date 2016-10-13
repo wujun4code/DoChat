@@ -1,0 +1,45 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>注册</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>昵称</ion-label>
+      <ion-input type="text" placeholder="例如：陈晨"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar>
+        <img [(src)]="signup.avatar">
+      </ion-avatar>
+      <button primary item-right (click)="avatarPick($event)">选取头像</button>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>手机</ion-label>
+      <ion-input type="mobile" placeholder="例如：18612345678" [(ngModel)]="signup.mobile"></ion-input>
+      <button primary item-right (click)="sendShortCode($event)" [disabled]="signup.sending">{{signup.actionText}}</button>
+    </ion-item>
+
+    <ion-item *ngIf="signup.showShortCodeBox">
+      <ion-label stacked>6 位数字验证码</ion-label>
+      <ion-input type="number" placeholder="例如：123456" [(ngModel)]="signup.shortcode"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="signup.showPasswordBox">
+      <ion-label stacked>登录密码</ion-label>
+      <ion-input type="password" placeholder="例如：!123&abc@"  [(ngModel)]="signup.password"></ion-input>
+    </ion-item>
+
+    <div *ngIf="signup.showPasswordBox" padding>
+      <button primary block (click)="signupNow($event)">注册</button>
+    </div>
+
+  </ion-list>
+</ion-content>
