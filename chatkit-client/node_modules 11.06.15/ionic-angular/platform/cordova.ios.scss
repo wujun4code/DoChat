@@ -1,0 +1,11 @@
+@import "../themes/ionic.globals.ios";
+
+// iOS Cordova
+// --------------------------------------------------
+
+$cordova-ios-statusbar-padding-modal-max-width:         $cordova-statusbar-padding-modal-max-width !default;
+
+// Cordova mixins are in the main cordova file
+.ios {
+  @include statusbar-padding($toolbar-ios-height, $content-ios-padding, $cordova-ios-statusbar-padding-modal-max-width, true);
+}
