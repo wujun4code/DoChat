@@ -1,1 +1,33 @@
-{{text}}
+<ion-list class="lc-chat" no-lines>
+	<!--<ion-item>
+		<ion-avatar class="avatar_default" item-left>
+			<img class="fixed" src="assets/img/avatar-ts-potatohead.png">
+		</ion-avatar>
+		<div class="plain plain_default">
+			驯龙高手尹志平，羊过小龙女
+		</div>
+	</ion-item>
+	<ion-item text-wrap>
+		<div class="plain plain_me" item-right>
+			那个法师是个战士
+		</div>
+		<ion-avatar class="avatar_me" item-right>
+			<img class="fixed" src="assets/img/avatar-ts-slinky.png">
+		</ion-avatar>
+	</ion-item>-->
+	<ion-item text-wrap *ngFor="let message of msgsInConv" class="top">
+		<ion-avatar class="avatar_default" item-left item-top *ngIf="!message.fromMe">
+			<img class="fixed" [src]="message.avatar">
+		</ion-avatar>
+		<div class="plain plain_default" item-left *ngIf="!message.fromMe">
+			{{message.text}}
+		</div>
+		<div class="plain plain_me" item-right *ngIf="message.fromMe">
+			{{message.text}}
+		</div>
+		<ion-avatar class="avatar_me" item-right *ngIf="message.fromMe">
+			<img class="fixed" [src]="message.avatar">
+		</ion-avatar>
+	</ion-item>
+</ion-list>
+<!--[ngClass]="{'bubble_me':message.fromMe,'bubble_default':!message.fromMe}"-->

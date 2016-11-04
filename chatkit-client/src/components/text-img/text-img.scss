@@ -8,7 +8,7 @@ text-img {
 text-img, text-img::after {
     width: $text-image-size;
     height: $text-image-size;
-    border-radius: $text-image-size / 2;
+    border-radius: $text-image-size / 16;
     display: table-cell;
     vertical-align: middle;
     text-align: center;

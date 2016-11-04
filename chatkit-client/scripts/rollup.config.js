@@ -46,15 +46,14 @@ var rollupConfig = {
                     // left-hand side can be an absolute path, a path
                     // relative to the current directory, or the name
                     // of a module in node_modules
-                    'node_modules/leancloud-realtime/dist/realtime.browser.js': ['Realtime']
+                    'node_modules/leancloud-realtime/dist/realtime.browser.js': ['Realtime', 'Conversation', 'TextMessage', 'IMClient'],
+                    'node_modules/leancloud-storage/dist/av.js':['AV']
                 }
             }
         ),
         nodeResolve({
-            module: true,
             main: true,
             browser: true,
-            extensions: ['.js']
         }),
         globals(),
         json()

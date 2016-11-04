@@ -5,11 +5,15 @@ import { DiscoverPage } from '../pages/discover/discover';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { ChatPage } from '../pages/chat/chat';
 import { ProfilePage } from '../pages/profile/profile';
 import { TextImage } from '../components/text-img/text-img';
+import { LCInputBox } from '../components/lc-input-box/lc-input-box';
 import { LCChat } from '../components/lc-chat/lc-chat';
 import { LCConversationList } from '../components/lc-conversation-list/lc-conversation-list';
 import { Xtest } from '../components/xtest/xtest';
+import { IONIC_DIRECTIVES } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 let schemas: any[] = [];
 schemas.push(CUSTOM_ELEMENTS_SCHEMA);
@@ -20,11 +24,13 @@ schemas.push(CUSTOM_ELEMENTS_SCHEMA);
     ContactPage,
     HomePage,
     ProfilePage,
+    ChatPage,
     TabsPage,
     TextImage,
     Xtest,
     LCChat,
-    LCConversationList
+    LCConversationList,
+    LCInputBox
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -36,9 +42,10 @@ schemas.push(CUSTOM_ELEMENTS_SCHEMA);
     ContactPage,
     HomePage,
     ProfilePage,
-    TabsPage
+    TabsPage,
+    ChatPage
   ],
-  providers: [],
+  providers: [Storage],
   schemas: schemas
 })
 export class AppModule { }
