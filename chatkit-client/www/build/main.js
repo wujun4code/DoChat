@@ -79882,13 +79882,13 @@ setTimeout(function () {
 }, DEVICE_READY_TIMEOUT);
 
 /* ion-compiler */
-var __decorate$110 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+var __decorate$111 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata$4 = (undefined && undefined.__metadata) || function (k, v) {
+var __metadata$5 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var ChatPage = (function () {
@@ -79918,34 +79918,56 @@ var ChatPage = (function () {
         console.log('parent page', JSON.stringify(message));
         this.chatContent.scrollToBottom();
     };
-    __decorate$110([
+    __decorate$111([
         ViewChild(Content), 
-        __metadata$4('design:type', (typeof (_a = typeof Content !== 'undefined' && Content) === 'function' && _a) || Object)
+        __metadata$5('design:type', (typeof (_a = typeof Content !== 'undefined' && Content) === 'function' && _a) || Object)
     ], ChatPage.prototype, "chatContent", void 0);
-    ChatPage = __decorate$110([
+    ChatPage = __decorate$111([
         Component({
             selector: 'page-chat', template: /* ion-inline-template */ '<!--\n  Generated template for the Chat page.\n\n  See http://ionicframework.com/docs/v2/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n	<ion-navbar>\n		<ion-title>{{convName}}</ion-title>\n	</ion-navbar>\n\n</ion-header>\n\n<ion-content padding id="chatContent">\n	<lc-chat [convId]="convId" [convName]="convName" (onMsg)="onMessage($event)"></lc-chat>\n</ion-content>\n<ion-footer>\n	<ion-toolbar>\n		<lc-input-box [convId]="convId"></lc-input-box>\n	</ion-toolbar>\n</ion-footer>'
         }), 
-        __metadata$4('design:paramtypes', [(typeof (_b = typeof NavController !== 'undefined' && NavController) === 'function' && _b) || Object, (typeof (_c = typeof NavParams !== 'undefined' && NavParams) === 'function' && _c) || Object])
+        __metadata$5('design:paramtypes', [(typeof (_b = typeof NavController !== 'undefined' && NavController) === 'function' && _b) || Object, (typeof (_c = typeof NavParams !== 'undefined' && NavParams) === 'function' && _c) || Object])
     ], ChatPage);
     return ChatPage;
     var _a, _b, _c;
 }());
 
 /* ion-compiler */
-var __decorate$109 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+var lcGlobal = {
+    leancloud: {
+        appId: '3knLr8wGGKUBiXpVAwDnryNT-gzGzoHsz',
+        appKey: '3RpBhjoPXJjVWvPnVmPyFExt',
+        region: 'cn',
+        publicConId: '57fc97f55bbb50005b3a25a9'
+    },
+    realtime_config: {
+        localCache: false
+    }
+};
+// export var currentClient: IMClient;
+// export function initClient(client: IMClient) {
+//     currentClient = client;
+// }
+var SharedService = (function () {
+    function SharedService() {
+    }
+    return SharedService;
+}());
+
+/* ion-compiler */
+var __decorate$110 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata$3 = (undefined && undefined.__metadata) || function (k, v) {
+var __metadata$4 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var HomePage = (function () {
     function HomePage(navCtrl) {
         this.navCtrl = navCtrl;
-        this.clientId = 'dev';
+        this.clientId = SharedService.clientId;
     }
     HomePage.prototype.ionViewDidLoad = function () {
         console.log('home ionViewDidLoad');
@@ -79955,37 +79977,13 @@ var HomePage = (function () {
         console.log('navToChat clicked.', JSON.stringify(con));
         this.navCtrl.push(ChatPage, { id: con.id, name: con.name, conv: con.metaData });
     };
-    HomePage = __decorate$109([
+    HomePage = __decorate$110([
         Component({
-            selector: 'page-home', template: /* ion-inline-template */ '<ion-header>\n  <ion-navbar>\n    <ion-title>消息</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <lc-conversation-list clientId="junwu" (convClicked)="navToChat($event)"></lc-conversation-list>\n  <!--<lc-chat></lc-chat>-->\n</ion-content>',
+            selector: 'page-home', template: /* ion-inline-template */ '<ion-header>\n  <ion-navbar>\n    <ion-title>消息</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <lc-conversation-list [clientId]="clientId" (convClicked)="navToChat($event)"></lc-conversation-list>\n  <!--<lc-chat></lc-chat>-->\n</ion-content>',
         }), 
-        __metadata$3('design:paramtypes', [(typeof (_a = typeof NavController !== 'undefined' && NavController) === 'function' && _a) || Object])
+        __metadata$4('design:paramtypes', [(typeof (_a = typeof NavController !== 'undefined' && NavController) === 'function' && _a) || Object])
     ], HomePage);
     return HomePage;
-    var _a;
-}());
-
-/* ion-compiler */
-var __decorate$112 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata$6 = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var ContactPage = (function () {
-    function ContactPage(navCtrl) {
-        this.navCtrl = navCtrl;
-    }
-    ContactPage = __decorate$112([
-        Component({
-            selector: 'page-contact', template: /* ion-inline-template */ '<ion-header>\n  <ion-navbar>\n    <ion-title>\n      联系人\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item>\n      <text-img text="DOTA2" item-left></text-img>\n      <p><b>DOTA2</b></p>\n      <p>海涛:劳资不会切假腿</p>\n    </ion-item>\n    <ion-item>\n      <text-img text="War3" item-left></text-img>\n      <p><b>War3</b></p>\n      <p>双刀砍苹果:我合成了最新的药剂</p>\n    </ion-item>\n    <ion-item>\n      <text-img text="三国群英传VII" item-left></text-img>\n      <p><b>三国群英传VII</b></p>\n      <p>艹孟德:会出 8 么？</p>\n    </ion-item>\n  </ion-list>\n</ion-content>'
-        }), 
-        __metadata$6('design:paramtypes', [(typeof (_a = typeof NavController !== 'undefined' && NavController) === 'function' && _a) || Object])
-    ], ContactPage);
-    return ContactPage;
     var _a;
 }());
 
@@ -79999,17 +79997,17 @@ var __decorate$113 = (undefined && undefined.__decorate) || function (decorators
 var __metadata$7 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var DiscoverPage = (function () {
-    function DiscoverPage(navCtrl) {
+var ContactPage = (function () {
+    function ContactPage(navCtrl) {
         this.navCtrl = navCtrl;
     }
-    DiscoverPage = __decorate$113([
+    ContactPage = __decorate$113([
         Component({
-            selector: 'page-discover', template: /* ion-inline-template */ '<ion-header>\n  <ion-navbar>\n    <ion-title>\n      发现\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n</ion-content>\n'
+            selector: 'page-contact', template: /* ion-inline-template */ '<ion-header>\n  <ion-navbar>\n    <ion-title>\n      通讯录\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <lc-contact-list></lc-contact-list>\n</ion-content>'
         }), 
         __metadata$7('design:paramtypes', [(typeof (_a = typeof NavController !== 'undefined' && NavController) === 'function' && _a) || Object])
-    ], DiscoverPage);
-    return DiscoverPage;
+    ], ContactPage);
+    return ContactPage;
     var _a;
 }());
 
@@ -80021,6 +80019,30 @@ var __decorate$114 = (undefined && undefined.__decorate) || function (decorators
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var __metadata$8 = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var DiscoverPage = (function () {
+    function DiscoverPage(navCtrl) {
+        this.navCtrl = navCtrl;
+    }
+    DiscoverPage = __decorate$114([
+        Component({
+            selector: 'page-discover', template: /* ion-inline-template */ '<ion-header>\n  <ion-navbar>\n    <ion-title>\n      发现\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n</ion-content>\n'
+        }), 
+        __metadata$8('design:paramtypes', [(typeof (_a = typeof NavController !== 'undefined' && NavController) === 'function' && _a) || Object])
+    ], DiscoverPage);
+    return DiscoverPage;
+    var _a;
+}());
+
+/* ion-compiler */
+var __decorate$115 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata$9 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 /*
@@ -80036,14 +80058,41 @@ var ProfilePage = (function () {
     ProfilePage.prototype.ionViewDidLoad = function () {
         console.log('Hello Profile Page');
     };
-    ProfilePage = __decorate$114([
+    ProfilePage = __decorate$115([
         Component({
             selector: 'page-profile', template: /* ion-inline-template */ '<!--\n  Generated template for the Profile page.\n\n  See http://ionicframework.com/docs/v2/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>我</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'
         }), 
-        __metadata$8('design:paramtypes', [(typeof (_a = typeof NavController !== 'undefined' && NavController) === 'function' && _a) || Object])
+        __metadata$9('design:paramtypes', [(typeof (_a = typeof NavController !== 'undefined' && NavController) === 'function' && _a) || Object])
     ], ProfilePage);
     return ProfilePage;
     var _a;
+}());
+
+/* ion-compiler */
+var __decorate$109 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata$3 = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var TabsPage = (function () {
+    function TabsPage() {
+        // this tells the tabs component which Pages
+        // should be each tab's root Page
+        this.tab1Root = HomePage;
+        this.tab2Root = ContactPage;
+        this.tab3Root = DiscoverPage;
+        this.tab4Root = ProfilePage;
+    }
+    TabsPage = __decorate$109([
+        Component({ template: /* ion-inline-template */ '<ion-tabs>\n  <ion-tab [root]="tab1Root" tabTitle="消息" tabIcon="text"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="通讯录" tabIcon="contact"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="发现" tabIcon="compass"></ion-tab>\n  <ion-tab [root]="tab4Root" tabTitle="我" tabIcon="ionitron"></ion-tab>\n</ion-tabs>\n'
+        }), 
+        __metadata$3('design:paramtypes', [])
+    ], TabsPage);
+    return TabsPage;
 }());
 
 /* ion-compiler */
@@ -80056,21 +80105,26 @@ var __decorate$108 = (undefined && undefined.__decorate) || function (decorators
 var __metadata$2 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var TabsPage = (function () {
-    function TabsPage() {
-        // this tells the tabs component which Pages
-        // should be each tab's root Page
-        this.tab1Root = HomePage;
-        this.tab2Root = ContactPage;
-        this.tab3Root = DiscoverPage;
-        this.tab4Root = ProfilePage;
+var LoginPage = (function () {
+    function LoginPage(navCtrl) {
+        this.navCtrl = navCtrl;
     }
-    TabsPage = __decorate$108([
-        Component({ template: /* ion-inline-template */ '<ion-tabs>\n  <ion-tab [root]="tab1Root" tabTitle="消息" tabIcon="text"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="通讯录" tabIcon="contacts"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="发现" tabIcon="ionic"></ion-tab>\n  <ion-tab [root]="tab4Root" tabTitle="我" tabIcon="contact"></ion-tab>\n</ion-tabs>\n'
+    LoginPage.prototype.goHome = function (event) {
+        console.log('clientId', this.clientId);
+        SharedService.clientId = this.clientId;
+        this.navCtrl.setRoot(TabsPage, { clientId: this.clientId });
+    };
+    LoginPage.prototype.ionViewDidLoad = function () {
+        console.log('Hello Login Page');
+    };
+    LoginPage = __decorate$108([
+        Component({
+            selector: 'page-login', template: /* ion-inline-template */ '<ion-header>\n\n  <ion-navbar>\n    <ion-title>login</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n  <ion-list class="reset">\n    <ion-item>\n      <ion-label floating>输入一个 ClientId</ion-label>\n      <ion-input type="text" [(ngModel)]="clientId"></ion-input>\n    </ion-item>\n    <button ion-button block (click)="goHome($event)">Go</button>\n  </ion-list>\n</ion-content>'
         }), 
-        __metadata$2('design:paramtypes', [])
-    ], TabsPage);
-    return TabsPage;
+        __metadata$2('design:paramtypes', [(typeof (_a = typeof NavController !== 'undefined' && NavController) === 'function' && _a) || Object])
+    ], LoginPage);
+    return LoginPage;
+    var _a;
 }());
 
 /* ion-compiler */
@@ -80085,7 +80139,7 @@ var __metadata$1 = (undefined && undefined.__metadata) || function (k, v) {
 };
 var MyApp = (function () {
     function MyApp(platform) {
-        this.rootPage = TabsPage;
+        this.rootPage = LoginPage;
         platform.ready().then(function () {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
@@ -80127,13 +80181,13 @@ var ColorGenerator = (function () {
 }());
 
 /* ion-compiler */
-var __decorate$115 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+var __decorate$116 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata$9 = (undefined && undefined.__metadata) || function (k, v) {
+var __metadata$10 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var TextImage = (function () {
@@ -80159,35 +80213,35 @@ var TextImage = (function () {
         enumerable: true,
         configurable: true
     });
-    __decorate$115([
+    __decorate$116([
         Input(), 
-        __metadata$9('design:type', String), 
-        __metadata$9('design:paramtypes', [String])
+        __metadata$10('design:type', String), 
+        __metadata$10('design:paramtypes', [String])
     ], TextImage.prototype, "text", null);
-    __decorate$115([
+    __decorate$116([
         Input(), 
-        __metadata$9('design:type', String), 
-        __metadata$9('design:paramtypes', [String])
+        __metadata$10('design:type', String), 
+        __metadata$10('design:paramtypes', [String])
     ], TextImage.prototype, "bgc", null);
-    TextImage = __decorate$115([
+    TextImage = __decorate$116([
         Directive({
             selector: 'text-img',
             providers: [ColorGenerator]
         }), 
-        __metadata$9('design:paramtypes', [(typeof (_a = typeof ElementRef !== 'undefined' && ElementRef) === 'function' && _a) || Object, (typeof (_b = typeof ColorGenerator !== 'undefined' && ColorGenerator) === 'function' && _b) || Object])
+        __metadata$10('design:paramtypes', [(typeof (_a = typeof ElementRef !== 'undefined' && ElementRef) === 'function' && _a) || Object, (typeof (_b = typeof ColorGenerator !== 'undefined' && ColorGenerator) === 'function' && _b) || Object])
     ], TextImage);
     return TextImage;
     var _a, _b;
 }());
 
 /* ion-compiler */
-var __decorate$116 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+var __decorate$117 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata$10 = (undefined && undefined.__metadata) || function (k, v) {
+var __metadata$11 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var LCInputBox = (function () {
@@ -80202,23 +80256,22 @@ var LCInputBox = (function () {
         configurable: true
     });
     LCInputBox.prototype.send = function () {
-        console.log("this.conversationId", this.conversationId, 'this.text', this.text);
         this.events.publish('lc:send', {
             id: this.conversationId,
             text: this.text
         });
         this.text = '';
     };
-    __decorate$116([
+    __decorate$117([
         Input(), 
-        __metadata$10('design:type', String), 
-        __metadata$10('design:paramtypes', [String])
+        __metadata$11('design:type', String), 
+        __metadata$11('design:paramtypes', [String])
     ], LCInputBox.prototype, "convId", null);
-    LCInputBox = __decorate$116([
+    LCInputBox = __decorate$117([
         Component({
-            selector: 'lc-input-box', template: /* ion-inline-template */ '<!--<pre contenteditable="true">input box here！</pre>-->\n    <ion-item>\n      <ion-textarea type="text" placeholder="说点什么" [(ngModel)]="text"></ion-textarea>\n      <button item-right ion-button color="primary" clear (click)="send()">发送</button>\n    </ion-item>'
+            selector: 'lc-input-box', template: /* ion-inline-template */ '<ion-item>\n  <ion-input type="text" placeholder="说点什么" [(ngModel)]="text"></ion-input>\n  <!--<button item-right ion-button color="primary" clear (click)="send()">发送</button>-->\n  <button item-right ion-button icon-right (click)="send()">发送<ion-icon name="send"></ion-icon></button>\n</ion-item>'
         }), 
-        __metadata$10('design:paramtypes', [(typeof (_a = typeof Events !== 'undefined' && Events) === 'function' && _a) || Object])
+        __metadata$11('design:paramtypes', [(typeof (_a = typeof Events !== 'undefined' && Events) === 'function' && _a) || Object])
     ], LCInputBox);
     return LCInputBox;
     var _a;
@@ -103123,35 +103176,13 @@ var Realtime = realtime_browser.Realtime;
 var TextMessage = realtime_browser.TextMessage;
 
 /* ion-compiler */
-var lcGlobal = {
-    leancloud: {
-        appId: '3knLr8wGGKUBiXpVAwDnryNT-gzGzoHsz',
-        appKey: '3RpBhjoPXJjVWvPnVmPyFExt',
-        region: 'cn',
-        publicConId: '57fc97f55bbb50005b3a25a9'
-    },
-    realtime_config: {
-        localCache: false
-    }
-};
-// export var currentClient: IMClient;
-// export function initClient(client: IMClient) {
-//     currentClient = client;
-// }
-var SharedService = (function () {
-    function SharedService() {
-    }
-    return SharedService;
-}());
-
-/* ion-compiler */
-var __decorate$117 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+var __decorate$118 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata$11 = (undefined && undefined.__metadata) || function (k, v) {
+var __metadata$12 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var LCChat = (function () {
@@ -103160,20 +103191,9 @@ var LCChat = (function () {
         this.ref = ref;
         this.onMsg = new EventEmitter();
         this.msgsInConv = [];
-        // for (let i = 0; i < 10; i++) {
-        //   this.msgsInConv.push({
-        //     avatar: 'assets/img/thumbnail-kitten-2.jpg',
-        //     text: i + "魏迟是猴子么？",
-        //     fromMe: i % 2 == 0,
-        //   });
-        // }
+        this.zone = new NgZone({ enableLongStackTrace: false });
     }
     Object.defineProperty(LCChat.prototype, "convId", {
-        // currentClient: IMClient;
-        // @Input()
-        // set client(client: IMClient) {
-        //   this.currentClient = client;
-        // }
         set: function (convId) {
             var _this = this;
             this.conversationId = convId;
@@ -103193,6 +103213,7 @@ var LCChat = (function () {
                             }
                             var fromMe = v.from == SharedService.client.id;
                             _this.msgsInConv.push({
+                                from: v.from,
                                 avatar: 'assets/img/thumbnail-kitten-2.jpg',
                                 text: text,
                                 fromMe: fromMe
@@ -103203,24 +103224,27 @@ var LCChat = (function () {
             }
             this.events.subscribe('lc:received:' + this.conversationId, function (data) {
                 var message = data[0];
-                console.log('received message', message);
-                _this.msgsInConv.push({
-                    avatar: 'assets/img/thumbnail-kitten-2.jpg',
-                    text: message._lctext,
-                    fromMe: false
+                _this.zone.run(function () {
+                    _this.msgsInConv.push({
+                        from: message.from,
+                        avatar: 'assets/img/thumbnail-kitten-2.jpg',
+                        text: message._lctext,
+                        fromMe: false
+                    });
                 });
-                _this.ref.detectChanges();
+                //this.ref.detectChanges();
                 _this.onMsg.emit(message);
             });
             this.events.subscribe('lc:sent:' + this.conversationId, function (data) {
                 var message = data[0];
-                console.log('sent message', JSON.stringify(message));
-                _this.msgsInConv.push({
-                    avatar: 'assets/img/thumbnail-kitten-2.jpg',
-                    text: message._lctext,
-                    fromMe: true
+                _this.zone.run(function () {
+                    _this.msgsInConv.push({
+                        avatar: 'assets/img/thumbnail-kitten-2.jpg',
+                        text: message._lctext,
+                        fromMe: true
+                    });
                 });
-                _this.ref.detectChanges();
+                //this.ref.detectChanges();
                 _this.onMsg.emit(message);
             });
         },
@@ -103235,25 +103259,25 @@ var LCChat = (function () {
         enumerable: true,
         configurable: true
     });
-    __decorate$117([
+    __decorate$118([
         Input(), 
-        __metadata$11('design:type', String), 
-        __metadata$11('design:paramtypes', [String])
+        __metadata$12('design:type', String), 
+        __metadata$12('design:paramtypes', [String])
     ], LCChat.prototype, "convId", null);
-    __decorate$117([
+    __decorate$118([
         Input(), 
-        __metadata$11('design:type', String), 
-        __metadata$11('design:paramtypes', [String])
+        __metadata$12('design:type', String), 
+        __metadata$12('design:paramtypes', [String])
     ], LCChat.prototype, "convName", null);
-    __decorate$117([
+    __decorate$118([
         Output(), 
-        __metadata$11('design:type', Object)
+        __metadata$12('design:type', Object)
     ], LCChat.prototype, "onMsg", void 0);
-    LCChat = __decorate$117([
+    LCChat = __decorate$118([
         Component({
-            selector: 'lc-chat', template: /* ion-inline-template */ '<ion-list class="lc-chat" no-lines>\n	<!--<ion-item>\n		<ion-avatar class="avatar_default" item-left>\n			<img class="fixed" src="assets/img/avatar-ts-potatohead.png">\n		</ion-avatar>\n		<div class="plain plain_default">\n			驯龙高手尹志平，羊过小龙女\n		</div>\n	</ion-item>\n	<ion-item text-wrap>\n		<div class="plain plain_me" item-right>\n			那个法师是个战士\n		</div>\n		<ion-avatar class="avatar_me" item-right>\n			<img class="fixed" src="assets/img/avatar-ts-slinky.png">\n		</ion-avatar>\n	</ion-item>-->\n	<ion-item text-wrap *ngFor="let message of msgsInConv" class="top">\n		<ion-avatar class="avatar_default" item-left item-top *ngIf="!message.fromMe">\n			<img class="fixed" [src]="message.avatar">\n		</ion-avatar>\n		<div class="plain plain_default" item-left *ngIf="!message.fromMe">\n			{{message.text}}\n		</div>\n		<div class="plain plain_me" item-right *ngIf="message.fromMe">\n			{{message.text}}\n		</div>\n		<ion-avatar class="avatar_me" item-right *ngIf="message.fromMe">\n			<img class="fixed" [src]="message.avatar">\n		</ion-avatar>\n	</ion-item>\n</ion-list>\n<!--[ngClass]="{\'bubble_me\':message.fromMe,\'bubble_default\':!message.fromMe}"-->'
+            selector: 'lc-chat', template: /* ion-inline-template */ '<ion-list class="lc-chat" no-lines>\n	<!--<ion-item>\n		<ion-avatar class="avatar_default" item-left>\n			<img class="fixed" src="assets/img/avatar-ts-potatohead.png">\n		</ion-avatar>\n		<div class="plain plain_default">\n			驯龙高手尹志平，羊过小龙女\n		</div>\n	</ion-item>\n	<ion-item text-wrap>\n		<div class="plain plain_me" item-right>\n			那个法师是个战士\n		</div>\n		<ion-avatar class="avatar_me" item-right>\n			<img class="fixed" src="assets/img/avatar-ts-slinky.png">\n		</ion-avatar>\n	</ion-item>-->\n	<ion-item text-wrap *ngFor="let message of msgsInConv" class="top">\n		<ion-avatar class="avatar_default" item-left item-top *ngIf="!message.fromMe">\n			<img class="fixed" [src]="message.avatar">\n		</ion-avatar>\n		<div item-left *ngIf="!message.fromMe">\n			<h4>{{message.from}}</h4>\n			<div class="plain plain_default">{{message.text}}</div>\n		</div>\n		<div class="plain plain_me" item-right *ngIf="message.fromMe">\n			{{message.text}}\n		</div>\n		<ion-avatar class="avatar_me" item-right *ngIf="message.fromMe">\n			<img class="fixed" [src]="message.avatar">\n		</ion-avatar>\n	</ion-item>\n</ion-list>\n<!--[ngClass]="{\'bubble_me\':message.fromMe,\'bubble_default\':!message.fromMe}"-->'
         }), 
-        __metadata$11('design:paramtypes', [(typeof (_a = typeof Events !== 'undefined' && Events) === 'function' && _a) || Object, (typeof (_b = typeof ChangeDetectorRef !== 'undefined' && ChangeDetectorRef) === 'function' && _b) || Object])
+        __metadata$12('design:paramtypes', [(typeof (_a = typeof Events !== 'undefined' && Events) === 'function' && _a) || Object, (typeof (_b = typeof ChangeDetectorRef !== 'undefined' && ChangeDetectorRef) === 'function' && _b) || Object])
     ], LCChat);
     return LCChat;
     var _a, _b;
@@ -103355,13 +103379,13 @@ var map_1 = map_1$1;
 Observable_1$4.Observable.prototype.map = map_1.map;
 
 /* ion-compiler */
-var __decorate$119 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+var __decorate$120 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata$13 = (undefined && undefined.__metadata) || function (k, v) {
+var __metadata$14 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var MessageSQLite = (function () {
@@ -103405,9 +103429,9 @@ var MessageSQLite = (function () {
     MessageSQLite.prototype.query = function (convId) {
         return null;
     };
-    MessageSQLite = __decorate$119([
+    MessageSQLite = __decorate$120([
         Injectable(), 
-        __metadata$13('design:paramtypes', [String])
+        __metadata$14('design:paramtypes', [String])
     ], MessageSQLite);
     return MessageSQLite;
 }());
@@ -103425,13 +103449,13 @@ var MessageProvider = (function () {
 }());
 
 /* ion-compiler */
-var __decorate$118 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+var __decorate$119 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata$12 = (undefined && undefined.__metadata) || function (k, v) {
+var __metadata$13 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var LCConversationList = (function () {
@@ -103444,11 +103468,11 @@ var LCConversationList = (function () {
         this.events.subscribe('lc:send', function (sendEventData) {
             _this.send(sendEventData[0]);
         });
+        this.zone = new NgZone({ enableLongStackTrace: false });
     }
     Object.defineProperty(LCConversationList.prototype, "clientId", {
         set: function (clientId) {
             this.currentClientId = clientId;
-            console.log(JSON.stringify(this.currentClientId));
             this.cacheProvider = new MessageProvider();
             this.initList();
         },
@@ -103457,35 +103481,38 @@ var LCConversationList = (function () {
     });
     LCConversationList.prototype.initList = function () {
         var _this = this;
-        // AV.init({
-        //   appId: lcGlobal.leancloud.appId,
-        //   appKey: lcGlobal.leancloud.appKey
-        // });
         var realtime = new Realtime({ appId: lcGlobal.leancloud.appId, region: 'cn' });
         realtime.createIMClient(this.currentClientId).then(function (imClient) {
-            _this.avIMClient = imClient;
-            // initClient(imClient);
-            // on message received
+            //this.avIMClient = imClient;
             SharedService.client = imClient;
-            imClient.on('message', function (message, conversation) {
+            SharedService.client.on('message', function (message, conversation) {
                 var eventName = 'lc:received:' + conversation.id;
                 // 检查是否开启了本地缓存聊天记录的选择，如果开启则记录在本地
                 if (lcGlobal.realtime_config.localCache) {
                     _this.cacheProvider.getProvider(_this.currentClientId).push(message, conversation);
                 }
                 console.log('Message received: ', message.id, message.type, JSON.stringify(message), eventName);
+                _this.updateLastMessage(message);
                 _this.events.publish(eventName, message);
             });
-            return imClient.getQuery().withLastMessagesRefreshed(true).find();
+            return SharedService.client.getQuery().withLastMessagesRefreshed(true).find();
         }).then(function (cons) {
-            cons.forEach(function (v, i, a) {
-                _this.items.push({
-                    id: v.id,
-                    name: v.name
+            _this.zone.run(function () {
+                cons.forEach(function (v, i, a) {
+                    var text = '';
+                    if (v.lastMessage instanceof TextMessage) {
+                        text = v.lastMessage.getText();
+                    }
+                    else {
+                        text = '';
+                    }
+                    _this.items.push({
+                        id: v.id,
+                        name: v.name,
+                        lastMessage: { from: v.lastMessage.from, text: text }
+                    });
                 });
             });
-            // fix promise won't refresh the UI
-            _this.ref.detectChanges();
         });
     };
     LCConversationList.prototype.onConversationItemClick = function (conv) {
@@ -103494,10 +103521,13 @@ var LCConversationList = (function () {
     LCConversationList.prototype.send = function (sendEventData) {
         var _this = this;
         var convIdStr = sendEventData.id;
-        this.avIMClient.getConversation(convIdStr, true).then(function (conv) {
-            return conv.send(new TextMessage(sendEventData.text));
+        SharedService.client.getConversation(convIdStr, true).then(function (conv) {
+            var txtMessage = new TextMessage(sendEventData.text);
+            console.log(JSON.stringify(_this.items));
+            console.log('send(sendEventData)');
+            return conv.send(txtMessage);
         }).then(function (message) {
-            console.log(JSON.stringify(message));
+            _this.updateLastMessage(message);
             _this.events.publish('lc:sent:' + convIdStr, message);
         }).catch(function (reason) {
             console.log('error:', reason.stack);
@@ -103505,36 +103535,80 @@ var LCConversationList = (function () {
     };
     LCConversationList.prototype.getMessageHistroyFromServer = function (convId, pIndex, pSize) {
         var convIdStr = convId;
-        this.avIMClient.getConversation(convIdStr, true).then(function (conv) {
+        SharedService.client.getConversation(convIdStr, true).then(function (conv) {
         });
     };
-    __decorate$118([
+    LCConversationList.prototype.updateLastMessage = function (message) {
+        var _this = this;
+        this.zone.run(function () {
+            var text = '';
+            if (message instanceof TextMessage) {
+                text = message.getText();
+            }
+            else {
+                text = '';
+            }
+            _this.items.filter(function (conv) {
+                return conv.id == message.cid;
+            }).forEach(function (v, i, a) {
+                v.lastMessage.from = message.from;
+                v.lastMessage.text = text;
+            });
+        });
+    };
+    __decorate$119([
         Input(), 
-        __metadata$12('design:type', String), 
-        __metadata$12('design:paramtypes', [String])
+        __metadata$13('design:type', String), 
+        __metadata$13('design:paramtypes', [String])
     ], LCConversationList.prototype, "clientId", null);
-    __decorate$118([
+    __decorate$119([
         Output(), 
-        __metadata$12('design:type', Object)
+        __metadata$13('design:type', Object)
     ], LCConversationList.prototype, "convClicked", void 0);
-    LCConversationList = __decorate$118([
+    LCConversationList = __decorate$119([
         Component({
-            selector: 'lc-conversation-list', template: /* ion-inline-template */ '<ion-list>\n	<!--<ion-item>\n		<text-img text="DOTA2" item-left></text-img>\n		<p><b>DOTA2</b></p>\n		<p>海涛:劳资不会切假腿</p>\n	</ion-item>\n	<ion-item>\n		<text-img text="War3" item-left></text-img>\n		<p><b>War3</b></p>\n		<p>双刀砍苹果:我合成了最新的药剂</p>\n	</ion-item>\n	<ion-item>\n		<text-img text="三国群英传VII" item-left></text-img>\n		<p><b>三国群英传VII</b></p>\n		<p>艹孟德:会出 8 么？</p>\n	</ion-item>-->\n	<button ion-item *ngFor="let item of items" (click)="onConversationItemClick(item)">\n    <text-img [text]="item.name" item-left></text-img>\n    <p><b>{{item.name}}</b></p>\n  </button>\n</ion-list>',
+            selector: 'lc-conversation-list', template: /* ion-inline-template */ '<ion-list>\n	<!--<ion-item>\n		<text-img text="DOTA2" item-left></text-img>\n		<p><b>DOTA2</b></p>\n		<p>海涛:劳资不会切假腿</p>\n	</ion-item>\n	<ion-item>\n		<text-img text="War3" item-left></text-img>\n		<p><b>War3</b></p>\n		<p>双刀砍苹果:我合成了最新的药剂</p>\n	</ion-item>\n	<ion-item>\n		<text-img text="三国群英传VII" item-left></text-img>\n		<p><b>三国群英传VII</b></p>\n		<p>艹孟德:会出 8 么？</p>\n	</ion-item>-->\n	<button ion-item detail-none *ngFor="let item of items" (click)="onConversationItemClick(item)">\n    <text-img [text]="item.name" item-left></text-img>\n    <p><b>{{item.name}}</b></p>\n	<p><b>{{item.lastMessage.from}}</b>: {{item.lastMessage.text}}</p>\n  </button>\n</ion-list>',
         }), 
-        __metadata$12('design:paramtypes', [(typeof (_a = typeof ChangeDetectorRef !== 'undefined' && ChangeDetectorRef) === 'function' && _a) || Object, (typeof (_b = typeof Events !== 'undefined' && Events) === 'function' && _b) || Object])
+        __metadata$13('design:paramtypes', [(typeof (_a = typeof ChangeDetectorRef !== 'undefined' && ChangeDetectorRef) === 'function' && _a) || Object, (typeof (_b = typeof Events !== 'undefined' && Events) === 'function' && _b) || Object])
     ], LCConversationList);
     return LCConversationList;
     var _a, _b;
 }());
 
 /* ion-compiler */
-var __decorate$120 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+var __decorate$121 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata$14 = (undefined && undefined.__metadata) || function (k, v) {
+var __metadata$15 = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var LCContactList = (function () {
+    function LCContactList() {
+        console.log('Hello LCContactList Component');
+        this.text = 'Hello World';
+    }
+    LCContactList.prototype.popupSearchFriend = function (event) {
+    };
+    LCContactList = __decorate$121([
+        Component({
+            selector: 'lc-contact-list', template: /* ion-inline-template */ '<ion-list>\n  <!--<ion-item>\n    <ion-avatar item-left item-top>\n      <img src="assets/img/icon-add-friend.svg">\n    </ion-avatar>\n    <button item-left item-top ion-button icon-only>\n      <ion-icon name="home"></ion-icon>\n    </button>\n  </ion-item>-->\n\n  <!--<ion-item text-left>\n    <text-img text="+" item-left></text-img>\n    <button ion-button item-right block clear>\n      新的朋友\n    </button>\n  </ion-item>-->\n\n  <button ion-item detail-none (click)="popupSearchFriend($event)">\n     <ion-icon name="add" item-left></ion-icon>\n     <b>新的朋友</b>\n  </button>\n  <button ion-item detail-none (click)="popupSearchFriend">\n     <ion-icon name="contacts" item-left></ion-icon>\n     <b>群聊</b>\n  </button>\n  <button ion-item detail-none (click)="popupSearchFriend">\n     <ion-icon name="pricetag" item-left></ion-icon>\n     <b>标签</b>\n  </button>\n  <button ion-item detail-none (click)="popupSearchFriend">\n     <ion-icon name="ribbon" item-left></ion-icon>\n     <b>公众号</b>\n  </button>\n  <ion-item-divider light>星标朋友</ion-item-divider>\n</ion-list>'
+        }), 
+        __metadata$15('design:paramtypes', [])
+    ], LCContactList);
+    return LCContactList;
+}());
+
+/* ion-compiler */
+var __decorate$122 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata$16 = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 /*
@@ -103548,11 +103622,11 @@ var Xtest = (function () {
         console.log('Hello Xtest Component');
         this.text = 'Hello World';
     }
-    Xtest = __decorate$120([
+    Xtest = __decorate$122([
         Component({
             selector: 'xtest', template: /* ion-inline-template */ '<!--\n  Generated template for the Xtest component.\n\n  See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html\n  for more info on Angular 2 Components.\n-->\n\n{{text}}\n'
         }), 
-        __metadata$14('design:paramtypes', [])
+        __metadata$16('design:paramtypes', [])
     ], Xtest);
     return Xtest;
 }());
@@ -106020,7 +106094,7 @@ var localforageCordovasqlitedriver = createCommonjsModule(function (module, expo
 }));
 });
 
-var __decorate$121 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+var __decorate$123 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
@@ -106155,7 +106229,7 @@ var Storage = (function () {
     Storage.prototype.forEach = function (iteratorCallback) {
         return this._db.iterate(iteratorCallback);
     };
-    Storage = __decorate$121([
+    Storage = __decorate$123([
         Injectable()
     ], Storage);
     return Storage;
@@ -106185,15 +106259,17 @@ var AppModule = (function () {
                 HomePage,
                 ProfilePage,
                 ChatPage,
+                LoginPage,
                 TabsPage,
                 TextImage,
                 Xtest,
                 LCChat,
                 LCConversationList,
-                LCInputBox
+                LCInputBox,
+                LCContactList
             ],
             imports: [
-                IonicModule.forRoot(MyApp)
+                IonicModule.forRoot(MyApp, { tabsHideOnSubPages: true })
             ],
             bootstrap: [IonicApp],
             entryComponents: [
@@ -106203,7 +106279,8 @@ var AppModule = (function () {
                 HomePage,
                 ProfilePage,
                 TabsPage,
-                ChatPage
+                ChatPage,
+                LoginPage
             ],
             providers: [Storage],
             schemas: schemas

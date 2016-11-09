@@ -26371,8 +26371,8 @@ sub {
 
 .arrow, .avatar_default:before, .avatar_me:after {
   position: absolute;
-  top: 3rem;
-  border: 1rem solid transparent;
+  top: 2rem;
+  border: 0.9rem solid transparent;
   content: "";
   width: 0;
   height: 0;
@@ -26380,20 +26380,23 @@ sub {
 }
 
 .avatar_default:before {
-  left: 5.2rem;
+  top: 3.2rem;
+  left: 5.5rem;
   border-right-color: #fff;
 }
 
 .avatar_me:after {
-  right: 5.2rem;
+  right: 5.5rem;
   border-left-color: #b2e281;
 }
 
 .plain {
   border-radius: 0.6rem;
-  padding: 1.5rem;
+  padding: 1rem;
   display: inline-block;
   max-width: 80rem;
+  min-height: 3.5rem;
+  min-width: 4rem;
 }
 
 .plain.plain_default {
@@ -26425,4 +26428,9 @@ text-img, text-img::after {
 
 text-img::after {
   content: attr(value);
+}
+
+page-login .reset {
+  height: 100%;
+  display: block;
 }

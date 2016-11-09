@@ -1,7 +1,7 @@
 // vars
 $chat-bgcolor:  color($colors, chatbgc);
 $chat-meBgcolor:#b2e281;
-$align-width:5.2rem !default;
+$align-width:5.5rem !default;
 .lc-chat {
   ion-note {
     font-size: 12px;
@@ -10,8 +10,9 @@ $align-width:5.2rem !default;
   }
   img.fixed{
     border-radius:0rem;
-  }
+    }
 }
+
 .content-ios, .item-ios, .content-md,.item-md , .content-wp,.item-wp {
     background-color: $chat-bgcolor;
 }
@@ -23,8 +24,8 @@ $align-width:5.2rem !default;
 }
 .arrow{
     position: absolute;
-    top: 3rem;
-    border: 1rem solid transparent;
+    top: 2rem;
+    border: 0.9rem solid transparent;
     content: "";
     width:0;  
     height:0;  
@@ -32,6 +33,7 @@ $align-width:5.2rem !default;
 }
 .avatar_default:before {
     @extend .arrow;
+    top: 3.2rem;
     left:$align-width;
     border-right-color: #fff;
 }
@@ -42,9 +44,11 @@ $align-width:5.2rem !default;
 }
 .plain {
     border-radius: 0.6rem;
-    padding: 1.5rem;
+    padding: 1rem;
     display: inline-block;
     max-width: 80rem;
+    min-height: 3.5rem;
+    min-width: 4rem;
 }
 .plain.plain_default{
     background-color: #fff;

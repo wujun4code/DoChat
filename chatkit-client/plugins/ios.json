@@ -27,9 +27,6 @@
         },
         "cordova-sqlite-storage": {
             "PACKAGE_NAME": "io.ionic.starter"
-        },
-        "cordova-plugin-sqlite-2": {
-            "PACKAGE_NAME": "com.ionicframework.chatkit444509"
         }
     },
     "dependent_plugins": {}
