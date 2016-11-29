@@ -7,7 +7,9 @@
 3. 最后仍然希望有得到高手基于这个框架开发成品 App 上架各大应用市场。
 
 ## 应用截图
+![](https://github.com/wujun4code/DoChat/blob/master/doc/screen-shot/01.gif)
 
+![](https://github.com/wujun4code/DoChat/blob/master/doc/screen-shot/02.gif)
 
 
 ## 如何在本地运行
