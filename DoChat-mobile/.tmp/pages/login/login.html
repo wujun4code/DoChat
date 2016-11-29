@@ -1,0 +1,17 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>login</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-list class="reset">
+    <ion-item>
+      <ion-label floating>输入一个 ClientId</ion-label>
+      <ion-input type="text" [(ngModel)]="clientId"   (keypress)="onKeypress($event)" ></ion-input>
+    </ion-item>
+    <button ion-button block (click)="goHome($event)">Go</button>
+  </ion-list>
+</ion-content>

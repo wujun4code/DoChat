@@ -1,0 +1,53 @@
+$text-image-size: 4rem !default;
+
+.text-img-super{
+    width: $text-image-size;
+    height: $text-image-size;
+    border-radius: $img-border-radius;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-size: font-size(xxx-large);
+}
+text-img {
+    @extend .text-img-super;
+    color: white;
+}
+text-img.hasText::after {
+    @extend .text-img-super;
+    content: attr(value);
+}
+$imgUrl:attr(img);
+text-img.hasImg::after{
+    background-image:url($imgUrl);//url('../../assets/img/avatar-bill-gates.jpg');
+    display: inline-block;
+    background-size: $text-image-size;
+    width:  $text-image-size; 
+    height:  $text-image-size;
+    content: "";
+}
+.chat-badge{
+    position: absolute;
+    bottom: 3.5rem;
+    //right: -1rem;
+    left: 4.2rem;
+    padding:0.2rem 0.5rem 1.2rem 0.5rem;
+    border-radius:2rem;
+    min-width: 1.0rem;
+    max-height: 0.5rem;
+    /*background: linear-gradient(top, #FF6969 0%,#ff0000 100%);
+	background: -webkit-linear-gradient(top, #FF6969 0%,#ff0000 100%);
+	background: -moz-linear-gradient(top, #FF6969 0%,#ff0000 100%);
+    box-shadow: 0 1px 2px rgba(0,0,0,.5), 0 1px 4px rgba(0,0,0,.4), 0 0 1px rgba(0,0,0,.7) inset, 0 10px 0px rgba(255,255,255,.11) inset; */
+    /*background-clip: padding-box;*/
+    background-color:color($colors, danger);
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.6);
+}
+[badge]::before,[ng-reflect-badge]::before{
+    @extend .chat-badge;
+  	content: attr(badge);
+}
+

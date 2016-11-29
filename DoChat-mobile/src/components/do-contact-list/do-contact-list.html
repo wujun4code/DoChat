@@ -1,0 +1,40 @@
+<ion-list>
+  <!--<ion-item>
+    <ion-avatar item-left item-top>
+      <img src="assets/img/icon-add-friend.svg">
+    </ion-avatar>
+    <button item-left item-top ion-button icon-only>
+      <ion-icon name="home"></ion-icon>
+    </button>
+  </ion-item>-->
+
+  <!--<ion-item text-left>
+    <text-img text="+" item-left></text-img>
+    <button ion-button item-right block clear>
+      新的朋友
+    </button>
+  </ion-item>-->
+
+  <button ion-item detail-none (click)="popupSearchFriend($event)">
+     <ion-icon name="add" item-left color="weixinOrange"></ion-icon>
+     新的朋友
+  </button>
+  <button ion-item detail-none (click)="popupGroupChat($event)">
+     <ion-icon name="contacts" item-left color="weixinGreen"></ion-icon>
+     群聊
+  </button>
+  <button ion-item detail-none (click)="popupEditTag($event)">
+     <ion-icon name="pricetag" item-left color="weixinBlue"></ion-icon>
+     标签
+  </button>
+  <button ion-item detail-none (click)="popupOfficialAccounts($event)" no-lines>
+     <ion-icon name="ribbon" item-left color="weixinBlue"></ion-icon>
+     公众号
+  </button>
+  <ion-item-divider class="lcdivider">星标好友</ion-item-divider>
+  <do-contact-item *ngFor="let stared of staredFriends" [friendId]="stared.clientId" [friendName]="stared.name" [avatarUrl]="stared.avatar" (contactClicked)="onContactItemClick(stared)">
+  </do-contact-item>
+  <ion-item-divider class="lcdivider">普通朋友</ion-item-divider>
+  <do-contact-item *ngFor="let friend of friends" [friendId]="friend.clientId" [friendName]="friend.name" [avatarUrl]="friend.avatar" (contactClicked)="onContactItemClick(friend)">
+  </do-contact-item>
+</ion-list>

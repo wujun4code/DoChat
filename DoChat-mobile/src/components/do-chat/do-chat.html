@@ -1,0 +1,73 @@
+<ion-content class="do-chat" #chatContent padding id="chatContent">
+
+	<div ion-fixed class="chat-header clearfix">
+		<img class="fixed doAvatar" [src]="convTitleImg" *ngIf="hasAvatar">
+		<div style="display: inline;float:left;">
+			<text-img *ngIf="!hasAvatar" [text]="convTitleText"></text-img>
+		</div>
+		<div class="chat-about">
+			<div class="chat-with">{{convTitleText}}</div>
+			<div class="chat-num-messages">{{msgSum}}</div>
+		</div>
+		<i class="fa fa-star"></i>
+	</div>
+	<ion-list class="do-chat" no-lines>
+		<ion-refresher #refresher (ionRefresh)="doRefresh($event)" (ionStart)="doStart($event)" (ionPull)="doPulling($event)">
+			<ion-refresher-content pullingIcon="arrow-dropdown" [pullingText]="pullingText" refreshingSpinner="circles" [refreshingText]="loadingText">
+			</ion-refresher-content>
+		</ion-refresher>
+		<!--<ion-item>
+		<ion-avatar class="avatar_default" item-left>
+			<img class="fixed" src="assets/img/avatar-ts-potatohead.png">
+		</ion-avatar>
+		<div class="plain plain_default">
+			驯龙高手尹志平，羊过小龙女
+		</div>
+	</ion-item>
+	<ion-item text-wrap>
+		<div class="plain plain_me" item-right>
+			那个法师是个战士
+		</div>
+		<ion-avatar class="avatar_me" item-right>
+			<img class="fixed" src="assets/img/avatar-ts-slinky.png">
+		</ion-avatar>
+	</ion-item>-->
+		<!--<ion-item text-wrap *ngFor="let message of orgeMessages" class="top">
+			<ion-avatar class="avatar_default" item-left item-top *ngIf="!message.fromMe">
+				<img class="fixed" [src]="message.avatar" *ngIf="message.avatar">
+				<text-img *ngIf="!message.avatar || 0 === message.avatar.length" [text]="message.fromNameText"></text-img>
+			</ion-avatar>
+			<div item-left *ngIf="!message.fromMe">
+				<h4>{{message.fromNameText}}</h4>
+				<div class="plain plain_default">{{message.text}}</div>
+			</div>
+			<div class="plain plain_me" item-right *ngIf="message.fromMe">
+				{{message.text}}
+			</div>
+			<ion-avatar class="avatar_me" item-right *ngIf="message.fromMe">
+				<img class="fixed" [src]="message.avatar" *ngIf="message.avatar">
+				<text-img *ngIf="!message.avatar || 0 === message.avatar.length" [text]="message.fromNameText"></text-img>
+			</ion-avatar>
+		</ion-item>-->
+		<message-item *ngFor="let message of orgeMessages" [message]=message></message-item>
+
+
+		<div *ngFor="let s of opMessages">
+			<div *ngIf="s.op | strEquals: 'typing'">
+				<div class="message-data" *ngIf="!isPrivate">
+					<span class="message-data-name"><i class="fa fa-circle online"></i> {{s.doFriend.getNameText()}}</span>
+				</div>
+				<div class="typing-indicator">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+		</div>
+	</ion-list>
+</ion-content>
+<ion-footer>
+	<ion-toolbar>
+		<do-input-box [conv]="conv"></do-input-box>
+	</ion-toolbar>
+</ion-footer>

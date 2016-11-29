@@ -1,0 +1,10 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>详细资料</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <do-contact-detail [clientId]="friendId" (clickNavToChat)="navToChatPage($event)"></do-contact-detail>
+</ion-content>

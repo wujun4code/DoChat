@@ -1,0 +1,213 @@
+// vars
+
+$green: #86BB71;
+$blue: #94C2ED;
+$orange: #E38968;
+$gray: #92959E;
+
+$x:#444753;
+$y:#6A6C75;
+$z:#F2F5F8;
+$a:#434651;
+$b:#D8DADF;
+$d:lighten($gray, 8%);
+$e:#F2F5F8;
+
+$chat-bgcolor:  #F2F5F8;
+$chat-plain:#94C2ED;
+$chat-plain-me:#86BB71;
+
+$avatar-min-size:4rem;
+$align-width:5.5rem !default;
+
+.do-chat {
+  ion-note {
+    font-size: 12px;
+    align-self: flex-start;
+    margin-top: 14px;
+  }
+  /*img.fixed{
+    border-radius:0rem;
+    }*/
+   background-color: $chat-bgcolor;
+}
+
+ion-content .do-chat,.do-chat .content-ios,.do-chat .item-ios,.do-chat .content-md,.do-chat .item-md ,.do-chat .content-wp,.do-chat .item-wp {
+    background-color: $chat-bgcolor;
+}
+$headerTop:5rem;
+.do-chat .scroll-content{
+    margin-top: $headerTop;
+}
+
+ion-list.do-chat{
+  margin-top: 10rem;
+}
+.do-chat ion-refresher{
+  top: $headerTop;
+}
+
+ion-item-divider.lcdivider {
+    background-color: $chat-bgcolor;
+}
+.item ion-avatar img{
+    border-radius:$img-border-radius;
+}
+.item-ios ion-avatar {
+  min-width: $avatar-min-size;
+  min-height: $avatar-min-size;
+}
+.item-ios ion-avatar img{
+  min-width: $avatar-min-size;
+  min-height: $avatar-min-size;
+}
+.bubble {
+    min-height: 0.5em;
+    vertical-align: top;
+    position: relative;
+    font-size: 1.5rem;
+}
+.arrow{
+    position: absolute;
+    top: 2rem;
+    border: 0.9rem solid transparent;
+    content: "";
+    width:0;  
+    height:0;  
+    font-size:0;  
+}
+.avatar_default:before {
+    @extend .arrow;
+    top: 3.2rem;
+    left:$align-width;
+    border-right-color: $chat-plain;
+}
+.avatar_me:after {
+    @extend .arrow;
+    right:$align-width;
+    border-left-color: $chat-plain-me;
+}
+.plain {
+    border-radius: 0.6rem;
+    padding: 1rem;
+    display: inline-block;
+    max-width: 80rem;
+    min-height: 3.5rem;
+    min-width: 4rem;
+    color: white;
+    font: 16px "Lato", Arial, sans-serif;
+}
+.plain.plain_default{
+    background-color: $chat-plain;
+}
+.plain.plain_me{
+    background-color: $chat-plain-me;
+}
+.top{
+    vertical-align: top;
+}
+/*.header-ios::after,.header-wp::after,.chat-header::after{
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAHBAMAAADzDtBxAAAAD1BMVEUAAAAAAAAAAAAAAAAAAABPDueNAAAABXRSTlMUCS0gBIh/TXEAAAAaSURBVAjXYxCEAgY4UIICBmMogMsgFLtAAQCNSwXZKOdPxgAAAABJRU5ErkJggg==);
+  background-repeat: repeat-x;
+  background-position: 0 -2px;
+  content: "";
+}*/
+$header-top:6rem;
+.chat-header {
+    top: $header-top;
+    padding: 2rem 4rem 1rem 4rem;
+    width: 100%;
+    background-color: $chat-bgcolor;
+    /*border-bottom: 0.5rem solid white;*/
+    
+    img {
+      float: left;
+    }
+    
+    .chat-about {
+      float: left;
+      padding-left: 1rem;
+      margin-top: 6px;
+    }
+    
+    .chat-with {
+      font-weight: bold;
+      font-size: 16px;
+    }
+    
+    .chat-num-messages {
+      color: $gray;
+    }
+    
+    .fa-star {
+      float: right;
+      color: #D8DADF;
+      font-size: 20px;
+      padding: 0,1rem,0,0;
+    }
+  }
+
+.clearfix:after {
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAHBAMAAADzDtBxAAAAD1BMVEUAAAAAAAAAAAAAAAAAAABPDueNAAAABXRSTlMUCS0gBIh/TXEAAAAaSURBVAjXYxCEAgY4UIICBmMogMsgFLtAAQCNSwXZKOdPxgAAAABJRU5ErkJggg==);
+  background-repeat: repeat-x;
+  background-position: 0 -2px;
+  content: "";
+}
+
+.typing-indicator {
+  $ti-color-bg: $chat-bgcolor;
+  background-color: $ti-color-bg;
+  display: table;
+  position: relative;
+  margin-left: 20px;
+  animation: 2s bulge infinite ease-out;
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: -2px;
+    /*height: 20px;
+    width: 20px;*/
+    border-radius: 50%;
+    background-color: $ti-color-bg;
+  }
+
+  span {
+    height: 10px;
+    width: 10px;
+    float: left;
+    margin: 0 1px;
+    background-color: $green;
+    display: block;
+    border-radius: 50%;
+    opacity: 0.4;
+    @for $i from 1 through 3 {
+      &:nth-of-type(#{$i}) {
+        animation: 1s blink infinite ($i * .3333s);
+      }
+    }
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes bulge {
+  50% {
+    transform: scale(1.05);
+  }
+}

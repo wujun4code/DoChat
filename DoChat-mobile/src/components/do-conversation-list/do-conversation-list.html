@@ -1,0 +1,8 @@
+<ion-list>
+	<!--<button ion-item detail-none *ngFor="let item of items" (click)="onConversationItemClick(item)">
+    <text-img [badge]="item.unreadBadge" [text]="item.name" item-left></text-img>
+    <p><b>{{item.name}}</b></p>
+	<p *ngIf="item.lastMessage.text.length > 0"><b>{{item.lastMessage.from}}</b>: {{item.lastMessage.text}}</p>
+    </button>-->
+  <do-conversation-item *ngFor="let item of items" [convItem]="item" (convItemClicked)="onConversationItemClick($event,item)" ></do-conversation-item>
+</ion-list>

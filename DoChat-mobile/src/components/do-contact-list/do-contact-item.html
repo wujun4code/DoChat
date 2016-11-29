@@ -1,0 +1,7 @@
+<button ion-item detail-none (click)="onContactItemClick($event)">
+    <ion-avatar item-left>
+        <img class="fixed" [src]="avatar" *ngIf="avatar">
+        <text-img *ngIf="!avatar || 0 === avatar.length" [text]="name" ></text-img>
+    </ion-avatar>
+    {{name}}
+</button>

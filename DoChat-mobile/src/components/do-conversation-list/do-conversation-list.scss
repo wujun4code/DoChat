@@ -1,0 +1,26 @@
+.conv-badge{
+    position: absolute;
+    top: 6%;
+    left: 40px;
+    padding: 1px 6px;
+    height: auto;
+    font-size: 12px;
+    line-height: 16px;
+    background-color:#f53d3d;
+    color: white;
+    display: inline-block;
+    padding: 3px 8px;
+    min-width: 10px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+}
+.item-ios .conv-badge{
+    border-radius: 10px;
+}
+.item-md .conv-badge{
+   border-radius: 4px
+}

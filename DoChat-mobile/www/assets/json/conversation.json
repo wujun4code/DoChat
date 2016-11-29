@@ -1,0 +1,50 @@
+[
+    {
+        "clientId": "bill",
+        "nickName": "BillGates",
+        "avatar": "assets/img/avatar-bill-gates.jpg",
+        "markName": "哈佛辍学生",
+        "isStard": true,
+        "location": "西雅图,美国"
+    },
+    {
+        "clientId": "jobs",
+        "nickName": "SteveJobs",
+        "avatar": "assets/img/avatar-steve-jobs.jpg",
+        "markName": "我果教主",
+        "isStard": true,
+        "location": "旧金山,美国"
+    },
+    {
+        "clientId": "zuckerberg",
+        "nickName": "MarkZuckerberg",
+        "avatar": "assets/img/avatar-zuckerberg.jpg",
+        "markName": "社交帝王",
+        "isStard": true,
+        "location": "纽约,美国"
+    },
+    {
+        "clientId": "woody",
+        "nickName": "Woody",
+        "avatar": "assets/img/avatar-ts-woody.png",
+        "markName": "Woody",
+        "isStard": false,
+        "location": "华盛顿,美国"
+    },
+    {
+        "clientId": "buzz",
+        "nickName": "Buzz",
+        "avatar": "assets/img/avatar-ts-buzz.png",
+        "markName": "Buzz",
+        "isStard": false,
+        "location": "华盛顿,美国"
+    },
+    {
+        "clientId": "leia",
+        "nickName": "Leia",
+        "avatar": "assets/img/avatar-leia.png",
+        "markName": "Leia",
+        "isStard": false,
+        "location": "伦敦,大不列颠"
+    }
+]

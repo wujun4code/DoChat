@@ -1,0 +1,33 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "me.wujun4code.chatwe"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "me.wujun4code.chatwe"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "me.wujun4code.chatwe"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "me.wujun4code.chatwe"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "me.wujun4code.chatwe"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "me.wujun4code.chatwe"
+        },
+        "cordova-sqlite-storage": {
+            "PACKAGE_NAME": "me.wujun4code.chatwe"
+        }
+    },
+    "dependent_plugins": {}
+}

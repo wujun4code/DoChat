@@ -1,0 +1,13 @@
+<button ion-item detail-none (click)="onConversationItemClick(conv)">
+   
+	<!--<text-img badge="6" [text]="item.name" [img]="item.titleImg" item-left></text-img>-->
+	<!--<text-img [badge]="item.unreadBadge" [text]="item.name" item-left></text-img>-->
+	<!--<text-img *ngIf="item.unreadBadge < 1" [text]="item.name" item-left></text-img>-->
+	<ion-avatar item-left>
+      <img class="fixed" [src]="conv.titleImg" *ngIf="hasImage">
+      <text-img *ngIf="!hasImage" [text]="conv.name" item-left></text-img>
+	  <div class="conv-badge" *ngIf="conv.unreadBadge>0">{{conv.unreadBadge}}</div>
+     </ion-avatar>
+  <p><b>{{conv.name}}</b></p>
+	<p *ngIf="hasLastMessage"><b>{{conv.lastMessage.from}}</b>: {{conv.lastMessage.text}}</p>
+</button>
